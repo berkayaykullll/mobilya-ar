@@ -3,13 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AR Sehpa Görünümü</title>
-  <!-- Google Model Viewer Kütüphanesi (Hem Android hem iOS AR destekler) -->
+  <title>3D Sehpa AR Görünümü</title>
+  <!-- Google Model Viewer Kütüphanesi (iOS ve Android Uyumlu) -->
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body, html { width: 100%; height: 100%; overflow: hidden; background-color: #f5f5f7; }
-    model-viewer { width: 100%; height: 100%; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f5f5f7;
+    }
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+    }
     #ar-button {
       position: absolute;
       bottom: 30px;
@@ -25,11 +39,20 @@
       box-shadow: 0 4px 14px rgba(0, 122, 255, 0.39);
       cursor: pointer;
       z-index: 999;
+      -webkit-tap-highlight-color: transparent;
+    }
+    #ar-button:active {
+      transform: translateX(-50%) scale(0.96);
+      background-color: #0062cc;
     }
   </style>
 </head>
 <body>
 
+  <!-- 
+    Görseldeki tam dosya isimleri tanımlandı: Sehpa.glb ve Sehpa.usdz
+    Eğer objeniz ekranda/AR'da küçük görünürse scale="1000 1000 1000" satırını ekleyebilirsiniz.
+  -->
   <model-viewer 
     src="Sehpa.glb" 
     ios-src="Sehpa.usdz" 
